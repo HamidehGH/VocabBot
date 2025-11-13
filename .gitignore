@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Django
+*.log
+db.sqlite3
+db.sqlite3-journal
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Environment Variables
+.env
+*.env
+
+# Static & Media Files
+/staticfiles/
+/media/
+
+# IDE and Editor folders
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Mac/Linux specific
+.DS_Store 

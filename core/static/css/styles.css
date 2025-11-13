@@ -1,0 +1,298 @@
+/* core/static/css/styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+@import url('https://cdn.fontcdn.ir/Font/Persian/Vazirmatn/Vazirmatn.css'); 
+
+
+/* Basic Reset & Font */
+body, h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, button {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif, "Vazirmatn";
+    box-sizing: border-box;
+}
+
+/* Body Gradient Background */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #8A2BE2, #FF1493, #00BFFF); 
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: #333;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.navbar-nav {
+    direction: ltr;
+}
+
+/* Main Container to Center Content */
+.main-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 1200px;
+    width: 90%;
+    text-align: left;
+    margin: 20px auto;
+}
+
+/* Specific width for login, register, add and edit the word */
+.main-container.narrow-form {
+    max-width: 600px; 
+}
+
+/* Alignmant for persian */
+.pr-alignmant{
+    direction: rtl;
+    text-align: right;
+}
+
+/* Alignmant for english */
+.eng-alignmant{
+    direction: ltr;
+    text-align: left;
+}
+
+/* Headings */
+h2 {
+    color: #5d3587;
+    margin-bottom: 25px;
+    font-size: 2.2em;
+    font-weight: 700;
+}
+
+/* Headings */
+h3 {
+    color: #5d3587;
+}
+
+h4 {
+    color: #5d3587;
+}
+
+/* Paragraphs */
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #4a4a4a;
+}
+
+/* Form Styles */
+form {
+    margin-top: 20px;
+}
+
+.form-control{
+    text-align: left;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-decoration: none; 
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: #7B68EE;
+}
+
+.btn-primary:hover {
+    background-color: #6a5acd;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background-color: #ff69d7;
+}
+
+.btn-secondary:hover {
+    background-color: #ff69d7;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-danger {
+    background-color: #DC143C; 
+}
+
+.btn-danger:hover {
+    background-color: #c00c30;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-tertiary{
+    background-color: #ca68ee;
+}
+
+.btn-tertiary:hover{
+    background-color: #ca68ee;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-small{
+    background-color: #ca68ee;
+    width: 100px;
+    padding: 10px 10px;
+    margin: 1px;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.btn-small:hover{
+    background-color: #ca68ee;
+}
+
+.btn-custom-width {
+    width: 200px;
+    }
+
+/* Alert/Message Styles */
+.alert {
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.alert-info {
+    background-color: #e0f2f7;
+    color: #0d47a1;
+    border: 1px solid #b3e5fc;
+    
+}
+
+.messages {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.messages li {
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.messages .success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    text-align: center;
+}
+
+.messages .warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    text-align: center;
+}
+
+.messages .error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    text-align: center;
+}
+
+/* Code blocks (for token) */
+code {
+    background-color: #f0f0f0;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    color: #c7254e;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+/* Links */
+a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}
+
+.card{
+    direction: ltr;
+    text-align: left;
+    margin: 20px 0px;
+}
+
+.flashcard {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    flex: 0 0 280px; 
+    max-width: calc(100% - 2rem);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.flashcard-content {
+    padding: 15px;
+    width: 100%;
+}
+
+.flashcard-image-thumb {
+    max-width: 100%;
+    max-height: 120px;
+    object-fit: contain;
+    margin-top: 10px;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+    .flashcard {
+        flex: 0 0 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+    .main-container{
+        padding: 20px 10px; 
+    }
+}
+
+@media (max-width: 576px) {
+    .flashcard {
+        flex: 0 0 calc(100% - 1rem);
+        max-width: calc(100% - 1rem);
+    }
+    .main-container{
+        padding: 20px 15px;
+    }
+}
+
+
+
+
+

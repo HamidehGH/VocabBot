@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block body_class %}flashcard-view{% endblock %} 
+
+{% block content %}
+
+<div class="container mt-5"> 
+
+    {% if messages %}
+        <div class="mb-3">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!--search bar-->
+    <div class="card p-4 mb-4 shadow-sm">
+        <form class="d-flex" method="GET" action="{% url 'home' %}">
+            <input 
+                class="form-control me-2" 
+                type="search" 
+                placeholder="Search here.." 
+                aria-label="Search" 
+                name="q" 
+                value="{{ request.GET.q|default:'' }}" 
+            >
+            <!-- d-none d-sm-block for hiding in responsive mode-->
+            <button class="btn btn-tertiary d-none d-sm-block" type="submit">Search</button> 
+            <!-- what will be shown in the responsive mode-->
+            <button class="btn btn-small d-block d-sm-none" type="submit">Search</button> 
+        </form>
+    </div>
+    <!--end of the search bar-->
+    
+    <!--All Cards-->
+    <div class="card p-4 mb-5 shadow-sm"> 
+        <h3 class="text-center mb-4">All Cards</h3>
+
+        <!--Add New Vocab button-->
+        <div class="text-center mb-4">
+            <a href="{% url 'add_vocabulary' %}" class="btn btn-primary">
+                Add New Vocab
+            </a>
+        </div>
+        
+        <div class="flashcard-grid d-flex flex-wrap justify-content-center gap-4"> 
+            {% for vocab in vocabs %}
+                <a href="{% url 'vocab_detail' vocab.pk %}" class="flashcard">
+                    <div class="flashcard-content">
+                        <div class="d-flex flex-column align-items-center justify-content-center p-3">
+                            <h3 class="word-text mb-3">{{ vocab.word }}</h3>
+                            {% if vocab.images.all %}
+                                <img src="{{ vocab.images.first.image.url }}" alt="{{ vocab.word }}" class="flashcard-image-thumb img-fluid rounded">
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            {% empty %}
+                <div class="col-12 text-center">
+                    <p>No vocabulary words added yet</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

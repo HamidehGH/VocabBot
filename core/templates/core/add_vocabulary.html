@@ -1,0 +1,81 @@
+{% extends 'core/base.html' %}
+{% block title %}Add Vocabulary{% endblock %}
+{% block main_container_extra_class %}narrow-form{% endblock %}
+
+{% block content %}
+
+    <h2 class="text-center">Add New Word</h2>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <hr>
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="mb-3">
+            <label for="{{ form.word.id_for_label }}" class="form-label">{{ form.word.label }}</label>
+            <input type="text" name="{{ form.word.name }}" id="{{ form.word.id_for_label }}" class="form-control eng-alignmant">
+            {% if form.word.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.word.errors|striptags }}
+                </div>
+            {% endif %}
+            <div class="form-text">{{ form.word.help_text }}</div>
+        </div>
+        <div class="mb-3">
+            <label for="{{ form.meaning.id_for_label }}" class="form-label">{{ form.meaning.label }}</label>
+            <input type="text" name="{{ form.meaning.name }}" id="{{ form.meaning.id_for_label }}" class="form-control pr-alignmant">
+            {% if form.meaning.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.meaning.errors|striptags }}
+                </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <label for="{{ form.description.id_for_label }}" class="form-label">{{ form.description.label }}</label>
+            <textarea name="{{ form.description.name }}" id="{{ form.description.id_for_label }}" class="form-control"></textarea>
+            {% if form.description.errors %}
+                <div class="invalid-feedback d-block">
+                    {{ form.description.errors|striptags }}
+                </div>
+            {% endif %}
+        </div>
+
+        <h3>Images</h3>
+        {{ formset.management_form }}
+        </hr>
+        <b>At least one image is required</b>
+        <div id="image-formset-container">
+            {% for image_form in formset %}
+                <div class="card p-3 mb-3 image-form-card">
+                    <div class="mb-2">
+                        {{ image_form.image.label_tag }}
+                        {{ image_form.image }}
+                        {% if image_form.image.errors %}
+                            <div class="text-danger small">{{ image_form.image.errors }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="mb-2">
+                        {{ image_form.caption.label_tag }}
+                        {{ image_form.caption }}
+                        {% if image_form.caption.errors %}
+                            <div class="text-danger small">{{ image_form.caption.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Add Word</button>
+        </div>
+        
+    </form>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+{% block main_container_extra_class %}narrow-form{% endblock %}
+
+{% block content %}
+<div class="container pr-alignmant">
+    <h4 class="text-center mb-4">Connect to Telegram Bot</h4>
+
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li {% if message.tags %}class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <p class="mt-2 text-center">برای دریافت روزانه لغات نیاز است تا به بات تلگرام متصل شوید</p>
+        {% if current_token %}
+            <div class="alert alert-info pr-alignmant">
+                <p>
+                  کد اتصال شما به بات تلگرام: <strong><code>{{ current_token }}</code></strong><br/> 
+                </p>
+                <p>
+                  لطفا کد را کپی کرده و به بات ارسال نمایید.
+                  این کد حداکثر تا 15 دقیقه دیگر فعال است.
+                </p>
+            </div>
+
+            <div class="text-center">
+                <form method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" name="generate_token" class="btn btn-secondary btn-custom-width">دریافت کد جدید</button>
+                </form>
+                <a href="https://t.me/EEEngTest_bot" target="_blank" class="btn btn-info btn-custom-width " style="margin-left: 10px;">ارسال پیام به بات</a>
+            </div>
+              
+        {% else %}
+            <form method="post">
+                {% csrf_token %}
+                <div class="text-center">
+                    <button type="submit" name="generate_token" class="btn btn-primary">ایجاد کد اتصال به بات</button>
+                </div>
+            </form>
+        {% endif %} 
+        
+</div>
+{% endblock %}
